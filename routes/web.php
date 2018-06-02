@@ -11,12 +11,37 @@
 |
 */
 
-
-
-Route::get('/', function () {
-    return view('test');
-});
+//use Illuminate\Routing\Route;
 
 Auth::routes();
 
+Route::get('/', function () {
+    return redirect('/blog');
+});
 Route::get('/home', 'HomeController@index')->name('home');
+
+//blog
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{slug}', 'BlogController@showPost');
+
+//admin
+Route::get('admin', function () {
+    return redirect('/admin/post');
+});
+
+Route::group(['namespace' =>'Admin','middleware'=>'auth'],function(){
+    Route::resource('admin/post', 'PostController', ['except' => 'show']);
+    Route::resource('admin/tag','TagController',['except' => 'show']);
+    Route::get('admin/upload','uploadController@index');
+
+});
+
+// 登录、注销
+Route::get('auth/login','Auth\AuthController@getLogin');
+Route::post('auth/login','Auth\AuthController@getLogin');
+Route::get('auth/logout','Auth\AuthController@logout');
+
+
+
+
+
