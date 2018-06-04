@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Jobs\PostFormFields;
-use App\Http\Requests;
+use App\Post;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
-use App\Post;
+use App\Jobs\PostFormFields;
 
 class PostController extends Controller
 {
@@ -27,15 +25,16 @@ class PostController extends Controller
      */
     public function create()
     {
-        $data = $this->dispatch(new PostFormFields());
+//        $data = $this->dispatch(new PostFormFields());
+        $data = $this->dispatchNow(new PostFormFields());
 
         return view('admin.post.create', $data);
     }
 
     /**
      * Store a newly created Post
-     *
      * @param PostCreateRequest $request
+     * @return mixed
      */
     public function store(PostCreateRequest $request)
     {
@@ -50,8 +49,9 @@ class PostController extends Controller
     /**
      * Show the post edit form
      *
-     * @param int $id
-     * @return Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
      */
     public function edit($id)
     {
@@ -63,8 +63,8 @@ class PostController extends Controller
     /**
      * Update the Post
      * @param PostUpdateRequest $request
-     * @param int $id
-     * @return
+     * @param $id
+     * @return mixed
      */
     public function update(PostUpdateRequest $request, $id)
     {
@@ -87,8 +87,8 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return Response
+     * @param $id
+     * @return mixed
      */
     public function destroy($id)
     {

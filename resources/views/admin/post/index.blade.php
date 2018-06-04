@@ -1,14 +1,20 @@
 @extends('admin.layout')
 
+@section('styles')
+    <link href="https://cdn.bootcss.com/datatables/1.10.16/css/dataTables.bootstrap4.css" rel="stylesheet">
+@stop
+
 @section('content')
     <div class="container-fluid">
         <div class="row page-title-row">
             <div class="col-md-6">
-                <h3>Posts <small>» Listing</small></h3>
+                <h3>Posts
+                    <small>» Listing</small>
+                </h3>
             </div>
             <div class="col-md-6 text-right">
                 <a href="/admin/post/create" class="btn btn-success btn-md">
-                    <i class="fa fa-plus-circle"></i> New Post
+                    <i class="fa fa-plus-circle"></i> 发布文章
                 </a>
             </div>
         </div>
@@ -55,8 +61,10 @@
 @stop
 
 @section('scripts')
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script>
-        $(function() {
+        $(function () {
             $("#posts-table").DataTable({
                 order: [[0, "desc"]]
             });

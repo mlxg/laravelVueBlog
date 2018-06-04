@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ config('blog.title') }} Admin</title>
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     @yield('styles')
 
@@ -27,7 +27,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">{{ config('blog.title') }} Admin</a>
+            {{--<a class="navbar-brand" href="#">{{ config('blog.title') }} Admin</a>--}}
+            <a class="navbar-brand" href="#">工作台</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
             @include('admin.partials.navbar')

@@ -2,14 +2,20 @@
 
 namespace App\Jobs;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+
 use App\Post;
 use App\Tag;
 use Carbon\Carbon;
-use Illuminate\Contracts\Bus\SelfHandling;
 
-
-class PostFormFields extends Job implements SelfHandling
+class PostFormFields extends Job implements ShouldQueue
 {
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
     /**
      * The id (if any) of the Post row
      *
@@ -68,7 +74,7 @@ class PostFormFields extends Job implements SelfHandling
 
         return array_merge(
             $fields,
-            ['allTags' => Tag::lists('tag')->all()]
+            ['allTags' => Tag::pluck('tag')->all()]
         );
     }
 
@@ -90,7 +96,7 @@ class PostFormFields extends Job implements SelfHandling
             $fields[$field] = $post->{$field};
         }
 
-        $fields['tags'] = $post->tags()->lists('tag')->all();
+        $fields['tags'] = $post->tags()->pluck('tag')->all();
 
         return $fields;
     }

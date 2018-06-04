@@ -11,10 +11,11 @@ class Post extends Model
     protected $fillable = [
         'title', 'subtitle', 'content_raw', 'page_image', 'meta_description','layout', 'is_draft', 'published_at',
     ];
+
     /**
      * The many-to-many relationship between posts and tags.
      *
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function tags()
     {
@@ -86,9 +87,10 @@ class Post extends Model
     }
 
 
-
     /**
      * Return the date portion of published_at
+     * @param $value
+     * @return mixed
      */
     public function getPublishDateAttribute($value)
     {
