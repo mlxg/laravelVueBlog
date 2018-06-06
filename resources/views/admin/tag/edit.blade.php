@@ -19,7 +19,7 @@
                         @include('admin.partials.errors')
                         @include('admin.partials.success')
 
-                        <form class="form-horizontal" role="form" method="GET" action="/admin/tag/{{ $id }}">
+                        <form class="form-horizontal" role="form" method="POST" action="/admin/tag/{{ $id }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="id" value="{{ $id }}">

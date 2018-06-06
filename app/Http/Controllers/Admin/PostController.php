@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.post.index')
-            ->withPosts(Post::all());
+        return view('admin.post.index')->withPosts(Post::all());
+
     }
 
     /**
@@ -25,8 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $data = $this->dispatch(new PostFormFields());
-//        $data = $this->dispatchNow(new PostFormFields());
+        $data = $this->dispatchNow(new PostFormFields());
 
         return view('admin.post.create', $data);
     }
@@ -41,8 +40,8 @@ class PostController extends Controller
         $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
-        return redirect()
-            ->route('admin.post.index')
+        return redirect("/admin/post")
+//            ->route('admin.post.index')
             ->withSuccess('New Post Successfully Created.');
     }
 
@@ -55,7 +54,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->dispatch(new PostFormFields($id));
+
+        $data = $this->dispatchNow(new PostFormFields($id));
+//        dd($data);
 
         return view('admin.post.edit', $data);
     }
@@ -79,8 +80,9 @@ class PostController extends Controller
                 ->withSuccess('Post saved.');
         }
 
-        return redirect()
-            ->route('admin.post.index')
+        return redirect("/admin/post")
+//        return redirect()
+//            ->route('admin.post.index')
             ->withSuccess('Post saved.');
     }
 
@@ -96,6 +98,7 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
+//        return redirect("/admin/post/index")
         return redirect()
             ->route('admin.post.index')
             ->withSuccess('Post deleted.');

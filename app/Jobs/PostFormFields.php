@@ -12,7 +12,7 @@ use App\Post;
 use App\Tag;
 use Carbon\Carbon;
 
-class PostFormFields implements ShouldQueue
+class PostFormFields extends job implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

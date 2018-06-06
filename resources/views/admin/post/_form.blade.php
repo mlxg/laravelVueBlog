@@ -44,10 +44,10 @@
                         }
                     </script>
                     <div class="visible-sm space-10"></div>
-                    <div class="col-md-4 text-right">
+                    {{--<div class="col-md-4 text-right">
                         <img src="{{ page_image($page_image) }}" class="img img_responsive" id="page-image-preview"
                              style="max-height:40px">
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                        value="{{ $publish_time }}">
             </div>
         </div>
-        <div class="form-group">
+        {{--<div class="form-group">
             <div class="col-md-8 col-md-offset-3">
                 <div class="checkbox">
                     <label>
@@ -88,7 +88,7 @@
                     </label>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <div class="form-group">
             <label for="tags" class="col-md-3 control-label">
                 Tags

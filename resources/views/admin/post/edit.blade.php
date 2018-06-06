@@ -27,7 +27,9 @@
                         @include('admin.partials.errors')
                         @include('admin.partials.success')
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.post.update', $id) }}">
+                        {{--<form class="form-horizontal" role="form" method="POST" action="{{ route('admin.post.update', $id) }}">--}}
+                        <form class="form-horizontal" role="form" method="POST" action="{{ action('Admin\PostController@update', $id) }}">
+                        {{--<form class="form-horizontal" role="form" method="POST" action="/update">--}}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
 
@@ -76,7 +78,8 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <form method="POST" action="{{ route('admin.post.destroy', $id) }}">
+                        {{--<form method="POST" action="{{ route('admin.post.destroy', $id) }}">--}}
+                        <form method="POST" action="{{ action('Admin\PostController@destroy', $id) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
