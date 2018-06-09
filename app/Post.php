@@ -9,7 +9,7 @@ class Post extends Model
 {
     protected $dates = ['published_at'];
     protected $fillable = [
-        'title', 'subtitle', 'content_raw', 'page_image', 'meta_description','layout', 'is_draft', 'published_at',
+        'title', 'subtitle', 'content_raw', 'page_image', 'meta_description', 'layout', 'is_draft', 'published_at',
     ];
 
     /**
@@ -31,7 +31,7 @@ class Post extends Model
     {
         $this->attributes['title'] = $value;
 
-        if (! $this->exists) {
+        if (!$this->exists) {
             $this->setUniqueSlug($value, '');
         }
     }
@@ -44,7 +44,7 @@ class Post extends Model
      */
     protected function setUniqueSlug($title, $extra)
     {
-        $slug = str_slug($title.'-'.$extra);
+        $slug = str_slug($title . '-' . $extra);
 
         if (static::whereSlug($slug)->exists()) {
             $this->setUniqueSlug($title, $extra + 1);
@@ -65,6 +65,7 @@ class Post extends Model
 
         $this->attributes['content_raw'] = $value;
         $this->attributes['content_html'] = $markdown->toHTML($value);
+
     }
 
     /**

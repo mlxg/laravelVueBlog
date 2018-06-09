@@ -98,9 +98,8 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
-//        return redirect("/admin/post/index")
-        return redirect()
-            ->route('admin.post.index')
+        return redirect("/admin/post")
+//            ->route('admin.post.index')
             ->withSuccess('Post deleted.');
     }
 }

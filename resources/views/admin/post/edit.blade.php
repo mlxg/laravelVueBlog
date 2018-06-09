@@ -40,15 +40,15 @@
                                     <div class="col-md-10 col-md-offset-2">
                                         <button type="submit" class="btn btn-primary btn-lg" name="action" value="continue">
                                             <i class="fa fa-floppy-o"></i>
-                                            Save - Continue
+                                            暂存
                                         </button>
                                         <button type="submit" class="btn btn-success btn-lg" name="action" value="finished">
                                             <i class="fa fa-floppy-o"></i>
-                                            Save - Finished
+                                            完成
                                         </button>
                                         <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modal-delete">
                                             <i class="fa fa-times-circle"></i>
-                                            Delete
+                                            删除
                                         </button>
                                     </div>
                                 </div>
